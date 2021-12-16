@@ -1,0 +1,41 @@
+@import '../../utils/colors.scss';
+
+.header {
+    background-color: $lightGray;
+    display: flex;
+    height: 60px;
+    width: 101%;
+    margin: -7px;
+    align-items: center; 
+    justify-content: space-between;
+}
+
+.header div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header div p{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.header div svg{
+    height: 35px;
+    width: 35px;
+    color: $darkGray
+}
+
+.header button {
+    margin-top: 5px;
+    color: $darkGray;
+    margin-left: 10px;
+    height: 50px;
+    width: 50px;
+}
+
+.header button:hover{
+    color: $lightGray;
+    background-color: $gray;
+}
