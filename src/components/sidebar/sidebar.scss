@@ -66,11 +66,20 @@
 }
 
 .closedSidebar ul {
+  position: relative;
   padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   margin-inline: auto;
+  height: 100%;
+
+  a:last-child {
+    color: $exitRed;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+  }
 }
 
 .closedSidebar ul a {
