@@ -1,83 +1,99 @@
-@import '../../utils/colors.scss';
+@import "../../utils/colors.scss";
 
 .sidebar {
-    display: flex;
-    background-color: $darkGray;
-    width: 15vw;
-    height: 100%;
-    flex-direction: column;
-    margin-left: -8px;
-    margin-top: 7px;
-} 
-
-.sidebar ul {
-    padding: 0;
+  position: relative;
+  display: flex;
+  background-color: $sideBarBlue;
+  margin-top: 7vh;
+  width: 14vw;
+  height: 100%;
+  flex-direction: column;
+  box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.25);
 }
 
-.sidebar ul a{
-    display: flex;
-    width: 100%;
-    padding: 10px;
-    justify-content: flex-start;
-    align-items: center;
-    text-decoration: none;
-    color: $lightGray;
+.sidebar ul {
+  position: relative;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-inline: auto;
+  padding-inline-start: 0px;
+  height: 100%;
+
+  a:last-child {
+    color: $exitRed;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+  }
+}
+
+.sidebar ul a {
+  display: flex;
+  width: 100%;
+  margin-block: 36px;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  color: $gray;
 }
 
 .sidebar ul a p {
-    margin-left: 10px;
-    font-size: 20px;
+  margin-left: 10px;
+  font-size: 20px;
 }
 
 .sidebar ul a svg {
-    width: 35px;
-    height: 35px;
-    margin-left: 10px;
+  width: 35px;
+  height: 35px;
 }
 
-.sidebar ul a:hover {
-    background-color: $lightGray;
-    border-radius: 5px;
-    color: $darkGray
-}
+/*.sidebar ul a:hover {
+  background-color: $lightGray;
+  border-radius: 5px;
+  color: $darkGray;
+}*/
 
-.closedSidebar{
-    display: flex;
-    background-color: $darkGray;
-    width: 5vw;
-    height: 100%;
-    flex-direction: column;
-    margin-left: -8px;
-    margin-top: 7px;
+.closedSidebar {
+  margin-top: 7vh;
+  display: flex;
+  background-color: $sideBarBlue;
+  width: 5vw;
+  height: 100%;
+  flex-direction: column;
+  box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.25);
 }
 
 .closedSidebar ul {
-    padding: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-inline: auto;
 }
 
-.closedSidebar ul a{
-    display: flex;
-    width: 100%;
-    padding: 10px;
-    justify-content: flex-start;
-    align-items: center;
-    text-decoration: none;
-    color: $lightGray;
+.closedSidebar ul a {
+  display: flex;
+  margin-block: 36px;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  color: $gray;
 }
 
 .closedSidebar ul a p {
-    margin-left: 10px;
-    font-size: 20px;
+  margin-left: 10px;
+  font-size: 20px;
 }
 
 .closedSidebar ul a svg {
-    width: 35px;
-    height: 35px;
-    margin-left: 10px;
+  width: 35px;
+  height: 35px;
 }
 
-.closedSidebar ul a:hover {
-    background-color: $lightGray;
-    border-radius: 5px;
-    color: $darkGray
-}
+/*.closedSidebar ul a:hover {
+  background-color: $lightGray;
+  border-radius: 5px;
+  color: $darkGray;
+}*/

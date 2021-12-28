@@ -1,41 +1,45 @@
-@import '../../utils/colors.scss';
+@import "../../utils/colors.scss";
 
 .header {
-    background-color: $lightGray;
-    display: flex;
-    height: 60px;
-    width: 101%;
-    margin: -7px;
-    align-items: center; 
-    justify-content: space-between;
+  background-color: $headerBlue;
+  display: flex;
+  height: 7vh;
+  width: 101%;
+  margin: -7px;
+  margin-top: 0px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  z-index: 6;
 }
 
-.header div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.header div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.header div p{
-    margin-left: 10px;
-    margin-right: 10px;
+.header div p {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.header div svg{
-    height: 35px;
-    width: 35px;
-    color: $darkGray
+.header div svg {
+  height: 35px;
+  width: 35px;
+  color: $darkGray;
 }
 
 .header button {
-    margin-top: 5px;
-    color: $darkGray;
-    margin-left: 10px;
-    height: 50px;
-    width: 50px;
+  margin-top: 5px;
+  color: $darkGray;
+  margin-left: 10px;
+  height: 50px;
+  width: 50px;
 }
 
-.header button:hover{
-    color: $lightGray;
-    background-color: $gray;
-}
+/*.header button:hover {
+  color: $lightGray;
+  background-color: $gray;
+}*/
