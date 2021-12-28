@@ -1,7 +1,10 @@
+@import "./utils/font.scss";
+
 .view {
   margin: -8px;
   overflow: hidden;
   height: 100vh;
+  font-family: "Karla", sans-serif;
 }
 
 body {

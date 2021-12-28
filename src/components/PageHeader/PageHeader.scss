@@ -1,0 +1,21 @@
+@import "../../utils/colors.scss";
+
+.page-header {
+  width: 82vw;
+  margin-top: 10vh;
+  margin-left: 16vw;
+
+  font-size: 32px;
+
+  .header-title {
+    padding: 8px;
+    padding-left: 24px;
+    font-weight: bold;
+    border-bottom: 1px solid $black;
+  }
+
+  /*.children {
+    margin-inline: auto;
+    width: fit-content;
+  }*/
+}

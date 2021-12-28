@@ -1,7 +1,7 @@
 @import "../../utils/colors.scss";
 
 .sidebar {
-  position: relative;
+  position: absolute;
   display: flex;
   background-color: $sideBarBlue;
   margin-top: 7vh;
@@ -32,7 +32,7 @@
 .sidebar ul a {
   display: flex;
   width: 100%;
-  margin-block: 36px;
+  padding-block: 36px;
   justify-content: flex-start;
   align-items: center;
   text-decoration: none;
@@ -49,11 +49,9 @@
   height: 35px;
 }
 
-/*.sidebar ul a:hover {
-  background-color: $lightGray;
-  border-radius: 5px;
-  color: $darkGray;
-}*/
+.sidebar ul a:hover {
+  opacity: 0.5;
+}
 
 .closedSidebar {
   margin-top: 7vh;
@@ -84,7 +82,7 @@
 
 .closedSidebar ul a {
   display: flex;
-  margin-block: 36px;
+  padding-block: 36px;
   justify-content: flex-start;
   align-items: center;
   text-decoration: none;
@@ -101,8 +99,6 @@
   height: 35px;
 }
 
-/*.closedSidebar ul a:hover {
-  background-color: $lightGray;
-  border-radius: 5px;
-  color: $darkGray;
-}*/
+.closedSidebar ul a:hover {
+  opacity: 0.5;
+}
