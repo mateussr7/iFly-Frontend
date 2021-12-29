@@ -14,11 +14,6 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <SideBar />
-        <PageHeader title="teste">
-          <AirlineCardSearch />
-          <AirlineCard />
-          <FlightCard />
-        </PageHeader>
       </BrowserRouter>
     </div>
   );
