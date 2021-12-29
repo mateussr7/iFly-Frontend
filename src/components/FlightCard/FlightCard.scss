@@ -5,15 +5,17 @@
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
-  font-size: x-large;
 }
 
 .flight-card {
   font-weight: bold;
   margin-top: 16px !important;
   margin: auto;
-  width: 60vw;
-  height: 14vh;
+  //width: 58vw;
+  width: 804px;
+  //height: 14vh;
+  height: 116px;
+  font-size: 16px;
   background: linear-gradient(
     180deg,
     rgba(181, 235, 253, 0.203125) 0%,
@@ -26,8 +28,9 @@
     margin: auto;
     margin-left: 24px;
     .flight-title {
+      font-size: large;
       padding: 16px;
-      padding-top: 8px;
+      padding-block: 8px;
       border-bottom: 1px solid #bdccff;
     }
 
@@ -35,6 +38,8 @@
       padding-inline: 16px;
       padding-block: 8px;
       font-size: large;
+      justify-content: flex-start;
+      gap: 24px;
     }
   }
 
@@ -47,9 +52,8 @@
   }
 
   .flight-action {
-    margin-top: 20px;
     width: 20%;
-
+    gap: 8px;
     .flight-price {
       width: fit-content;
       margin-inline: auto;
@@ -64,6 +68,8 @@
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
       border-radius: 9px;
       font-weight: bold;
+      width: 100px;
+      height: 40px;
     }
   }
 }

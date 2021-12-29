@@ -1,0 +1,51 @@
+@import "../../utils/colors.scss";
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+.airline-card {
+  font-weight: bold;
+  margin-top: 16px !important;
+  margin: auto;
+  width: 804px;
+  //width: 58vw;
+  //height: 14vh;
+  height: 116px;
+  background: linear-gradient(
+    180deg,
+    rgba(181, 235, 253, 0.203125) 0%,
+    #def1f8 100%
+  );
+  border-radius: 17px;
+
+  .airline-info {
+    gap: 60px;
+    width: 70%;
+    margin: auto;
+    margin-left: 48px;
+    .airline-title {
+      font-size: large;
+    }
+
+    .airline-cnpj {
+      font-size: large;
+    }
+  }
+
+  .airline-button {
+    width: fit-content;
+    margin: auto;
+
+    button {
+      width: 100px;
+      background-color: $white;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 9px;
+      font-weight: bold;
+    }
+  }
+}
