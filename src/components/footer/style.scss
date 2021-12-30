@@ -1,0 +1,18 @@
+@import '../../utils/colors.scss';
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 45px;
+    width: 100%;
+    background-color: $white;
+    opacity: 86%;
+    bottom: 1px;
+    font-weight: 700;
+}
+
+.footer svg {
+    margin-right: 10px;
+}

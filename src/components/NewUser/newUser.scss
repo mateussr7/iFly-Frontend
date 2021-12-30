@@ -1,0 +1,67 @@
+@import '../../utils/colors.scss';
+
+.body {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../../images/wallpaper2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 555px;
+    height: 507px;
+    border-radius: 33px;
+    opacity: 86%;
+}
+
+.container input[type=submit] {
+    background-color: #FFFFFF;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.box p {
+    margin-left: 30px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+input[type=text] {
+    background-color: $white;
+    border: none;
+}
+
+.button-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+.button-div button {
+    margin: 10px;
+    width: 100%;
+}

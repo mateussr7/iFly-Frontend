@@ -1,21 +1,20 @@
 import React from "react";
-import Header from "./components/header";
-import SideBar from "./components/sidebar";
-import "./app.scss";
 import { BrowserRouter } from "react-router-dom";
-import PageHeader from "./components/PageHeader/PageHeader";
-import AirlineCard from "./components/AirlineCard/AirlineCard";
-import FlightCard from "./components/FlightCard/FlightCard";
-import AirlineCardSearch from "./components/AirlineCardSearch/AirlineCardSearch";
+import { useSelector } from "react-redux";
+import { getLoggedUser } from "./store/user/selectors";
+import MainScreen from "./pages/mainScreen";
+import CredentialsScreen from "./pages/credentialsScreen";
+import './app.scss'
 
 const App = () => {
+  const user = useSelector(getLoggedUser);
+
   return (
-    <div className="view">
-      <BrowserRouter>
-        <Header />
-        <SideBar />
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <div className="view">
+        {user !== null ? <MainScreen /> : <CredentialsScreen />}
+      </div>
+    </BrowserRouter>
   );
 };
 

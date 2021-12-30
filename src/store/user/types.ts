@@ -1,0 +1,60 @@
+
+export interface User {
+    id: number
+    nome: string
+    email: string
+    senha: string
+}
+
+export interface UserDTO {
+    id?: number
+    nome: string
+    email: string
+    senha: string
+}
+
+export interface Airline extends User {
+    cnpj: string
+}
+
+export interface AirlineDTO extends UserDTO {
+    cnpj: string
+}
+
+export interface Passenger extends User {
+    cpf: string
+}
+
+export interface PassengerDTO extends UserDTO {
+    cpf: string
+}
+
+export interface Administrator extends User {
+    cpf: string
+}
+
+export interface AdministratorDTO extends UserDTO {
+    cpf: string
+}
+
+export interface UserState {
+    loggedUser: Airline | Administrator | Passenger | null
+    error: boolean
+    message: string | null
+    newUser: boolean
+}
+
+export interface Credentials {
+    email: string,
+    password: string
+}
+
+export enum UserActions {
+    LOGIN = '@user/LOGIN',
+    LOGIN_SUCCESS = '@user/LOGIN_SUCESS',
+    LOGIN_ERROR = '@user/LOGIN_ERROR',
+    SET_NEW_USER = '@user/SET_NEW_USER',
+    REGISTER_NEW_USER = '@user/REGISTER_NEW_USER',
+    REGISTER_NEW_USER_SUCCESS = '@user/REGISTER_NEW_USER_SUCCESS',
+    REGISTER_NEW_USER_ERROR = '@user/REGISTER_NEW_USER_ERROR'
+}

@@ -5,6 +5,9 @@
   overflow: auto;
   height: 100vh;
   font-family: "Karla", sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 body {

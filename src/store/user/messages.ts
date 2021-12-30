@@ -1,0 +1,1 @@
+export const errorMessage = "Não foi possível realizar o Login pois as credenciais não são válidas"
