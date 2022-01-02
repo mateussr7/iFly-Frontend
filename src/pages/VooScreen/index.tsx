@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FlightCard from "../../components/FlightCard/FlightCard";
 import FlightCardSearch from "../../components/FlightCardSearch/FlightCardSearch";
@@ -7,7 +7,7 @@ import { fetchAeroportoList } from "../../store/airports/actions";
 import { getAeroportos } from "../../store/airports/selectors";
 import { getVooList } from "../../store/voo/selectors";
 
-const VooScreen = () => {
+const VooScreen: FC<{}> = () => {
   const dispatch = useDispatch();
   const aeroportos = useSelector(getAeroportos);
   const vooList = useSelector(getVooList);
