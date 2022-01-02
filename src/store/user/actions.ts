@@ -1,8 +1,6 @@
 import { action } from "typesafe-actions";
 import {
   PassengerDTO,
-  AdministratorDTO,
-  AirlineDTO,
   UserActions,
   Credentials,
   Passenger,

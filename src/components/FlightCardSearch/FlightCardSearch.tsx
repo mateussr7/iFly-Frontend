@@ -1,4 +1,4 @@
-import { IconButton, MenuItem, TextField } from "@material-ui/core";
+import { IconButton, TextField } from "@material-ui/core";
 import "./FlightCardSearch.scss";
 import SearchIcon from "@material-ui/icons/Search";
 import Autocomplete from "@material-ui/lab/Autocomplete";

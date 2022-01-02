@@ -1,4 +1,4 @@
-import { takeLatest, all, call, put } from "redux-saga/effects";
+import { takeLatest, call, put } from "redux-saga/effects";
 import {
   loginSucess,
   loginError,
@@ -7,8 +7,6 @@ import {
 } from "./actions";
 import { AnyAction } from "redux";
 import {
-  Administrator,
-  Airline,
   Passenger,
   Credentials,
   UserActions,

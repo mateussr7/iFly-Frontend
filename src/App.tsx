@@ -6,10 +6,7 @@ import MainScreen from "./pages/mainScreen";
 import CredentialsScreen from "./pages/credentialsScreen";
 import "./app.scss";
 import {
-  Administrator,
-  Airline,
   LoginDTO,
-  Passenger,
 } from "./store/user/types";
 
 const App = () => {

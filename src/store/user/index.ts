@@ -1,9 +1,6 @@
 import { Reducer } from "redux";
 import {
-  Administrator,
-  Airline,
   LoginDTO,
-  Passenger,
   UserActions,
   UserState,
 } from "./types";

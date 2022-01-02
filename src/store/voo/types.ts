@@ -1,4 +1,3 @@
-import { Airline } from "../user/types";
 
 export interface Voo {
   id: number;
