@@ -12,6 +12,11 @@ export interface UserDTO {
   senha: string;
 }
 
+export interface LoginDTO {
+  user: User;
+  type: string;
+}
+
 export interface Airline extends User {
   cnpj: string;
 }
