@@ -1,52 +1,60 @@
-import { Reducer } from "redux"
-import { Administrator, Airline, Passenger, UserActions, UserState } from "./types"
+import { Reducer } from "redux";
+import {
+  Administrator,
+  Airline,
+  LoginDTO,
+  Passenger,
+  UserActions,
+  UserState,
+} from "./types";
 
 //const user = {id: 1, cpf: 'aaa', cnpj: 'a', email: 'aasdasdsa', nome: 'a', senha: 'dd'}
 
 const INITIAL_STATE: UserState = {
-    loggedUser: null,
-    error: false,
-    message: null,
-    newUser: false
-}
+  loggedUser: null,
+  error: false,
+  message: null,
+  newUser: false,
+};
 
 const userReducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
-    switch(action.type) {
-        case UserActions.LOGIN_SUCCESS: {
-            const user: Airline | Administrator | Passenger = action.payload.user
-            return {
-                ...state,
-                error: false,
-                message: null,
-                loggedUser: user
-            }
-        }
-        case UserActions.LOGIN_ERROR: {
-            const message: string = action.payload.message
-            return {
-                ...state,
-                loggedUser: null,
-                error: true,
-                message: message
-            }
-        }
-        case UserActions.SET_NEW_USER: {
-            const newUserMode = action.payload.newUserMode
-            return {
-                ...state,
-                newUser: newUserMode
-            }
-        }
-        case UserActions.REGISTER_NEW_USER_SUCCESS: {
-            const newUser = action.payload.user
-            return {
-                ...state,
-                loggedUser: newUser,
-                newUser: false
-            }
-        }
-        default: return state
+  switch (action.type) {
+    case UserActions.LOGIN_SUCCESS: {
+      const user: LoginDTO = action.payload.user;
+      return {
+        ...state,
+        error: false,
+        message: null,
+        loggedUser: user,
+      };
     }
-}
+    case UserActions.LOGIN_ERROR: {
+      const message: string = action.payload.message;
+      return {
+        ...state,
+        loggedUser: null,
+        error: true,
+        message: message,
+      };
+    }
+    case UserActions.SET_NEW_USER: {
+      const newUserMode = action.payload.newUserMode;
+      return {
+        ...state,
+        newUser: newUserMode,
+      };
+    }
+    case UserActions.REGISTER_NEW_USER_SUCCESS: {
+      const newUser = action.payload.user;
+      return {
+        ...state,
+        loggedUser: newUser,
+        newUser: false,
+      };
+    }
+    default:
+      return state;
+  }
+};
 
-export default userReducer
+export default userReducer;

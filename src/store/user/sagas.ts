@@ -28,7 +28,6 @@ function* loginSagas(action: AnyAction) {
     const credentials: Credentials = action.payload.credentials;
     const loggedUser: LoginDTO = yield call(() => loginService(credentials));
     yield put(loginSucess(loggedUser));
-    console.log(loggedUser);
     localStorage.setItem("user", String(loggedUser.user.id));
   } catch {
     yield put(loginError(errorMessage));

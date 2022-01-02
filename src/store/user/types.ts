@@ -43,7 +43,7 @@ export interface AdministratorDTO extends UserDTO {
 }
 
 export interface UserState {
-  loggedUser: Airline | Administrator | Passenger | null;
+  loggedUser: LoginDTO | null;
   error: boolean;
   message: string | null;
   newUser: boolean;
