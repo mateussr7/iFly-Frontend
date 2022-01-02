@@ -1,8 +1,7 @@
-
 export interface Voo {
   id: number;
   capacidade: number;
-  horario: Date;
+  horario: string;
   valor: number;
   idEmpresaAerea: number;
   idRota: number;
@@ -19,6 +18,9 @@ export interface VooSearchDTO {
 export interface VooState {
   listVoo: Voo[];
   voo: Voo | undefined;
+  originId: number;
+  destinyId: number;
+  idRota: number;
 }
 
 export enum VooActions {
@@ -28,4 +30,7 @@ export enum VooActions {
   ADD_VOO_SUCCESS = "@voo/ADD_VOO_SUCCESS",
   EDIT_VOO = "@voo/EDIT_VOO",
   EDIT_VOO_SUCCESS = "@voo/EDIT_VOO_SUCCESS",
+  SET_ORIGIN_DESTINY = "@voo/SET_ORIGIN_DESTINY",
+  GET_ROTA_ORIGIN_DESTINY = "@voo/GET_ROTA_ORIGIN_DESTINY",
+  GET_ROTA_ORIGIN_DESTINY_SUCCESS = "@voo/GET_ROTA_ORIGIN_DESTINY_SUCCESS",
 }

@@ -7,9 +7,13 @@ import "./FlightCard.scss";
 interface props {
   voo: Voo;
   airline?: Airline;
+  onClickFunction: (newVoo: Voo) => void;
 }
-const FlightCard = ({ voo, airline }: props) => {
-  const clickVoo = () => {};
+const FlightCard = ({ voo, airline, onClickFunction }: props) => {
+  const clickVoo = () => {
+    onClickFunction(voo);
+  };
+
   return (
     <div className="flight-card flex-row">
       <div className="flight-info flex-row-column">

@@ -16,3 +16,12 @@ export const editVoo = (data: Voo) => action(VooActions.EDIT_VOO, data);
 
 export const editVooSuccess = (data: Voo) =>
   action(VooActions.EDIT_VOO_SUCCESS, data);
+
+export const setOriginDestiny = (data: VooSearchDTO) =>
+  action(VooActions.SET_ORIGIN_DESTINY, data);
+
+export const getRotaOriginDestiny = (idOrigin: number, idDestiny: number) =>
+  action(VooActions.GET_ROTA_ORIGIN_DESTINY, { idOrigin, idDestiny });
+
+export const getRotaOriginDestinySuccess = (idRota: number) =>
+  action(VooActions.GET_ROTA_ORIGIN_DESTINY_SUCCESS, idRota);
