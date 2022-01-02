@@ -45,6 +45,7 @@ const LoginComponent: FC<{}> = () => {
             <div className="login-box">
                 <Typography>Senha</Typography>
                 <TextField variant="outlined" 
+                    type="password"
                     value={password}
                     onChange={(e) => {
                         handlePasswordChange(e.target.value as string)
