@@ -12,6 +12,11 @@ export interface UserDTO {
   senha: string;
 }
 
+export interface LoginDTO {
+  user: User;
+  type: string;
+}
+
 export interface Airline extends User {
   cnpj: string;
 }
@@ -38,7 +43,7 @@ export interface AdministratorDTO extends UserDTO {
 }
 
 export interface UserState {
-  loggedUser: Airline | Administrator | Passenger | null;
+  loggedUser: LoginDTO | null;
   error: boolean;
   message: string | null;
   newUser: boolean;

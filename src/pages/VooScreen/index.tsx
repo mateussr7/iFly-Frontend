@@ -1,28 +1,32 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import FlightCard from "../../components/FlightCard/FlightCard";
 import FlightCardSearch from "../../components/FlightCardSearch/FlightCardSearch";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { fetchAeroportoList } from "../../store/airports/actions";
 import { getAeroportos } from "../../store/airports/selectors";
+import { getVooList } from "../../store/voo/selectors";
 
 const VooScreen = () => {
   const dispatch = useDispatch();
   const aeroportos = useSelector(getAeroportos);
+  const vooList = useSelector(getVooList);
+
   useEffect(() => {
     dispatch(fetchAeroportoList());
   }, []);
 
-  useEffect(() => {
-    console.log(aeroportos);
-  }, [aeroportos]);
-
-  const content = () => {
-    return <>Fligh</>;
-  };
   return (
     <PageHeader
       title="Comprar Voo"
-      children={<FlightCardSearch aeroportos={aeroportos} />}
+      children={
+        <>
+          <FlightCardSearch aeroportos={aeroportos} />
+          {vooList.map((voo) => (
+            <FlightCard key={voo.id} voo={voo} />
+          ))}
+        </>
+      }
     />
   );
 };

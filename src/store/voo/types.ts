@@ -1,3 +1,5 @@
+import { Airline } from "../user/types";
+
 export interface Voo {
   id: number;
   capacidade: number;
@@ -5,6 +7,7 @@ export interface Voo {
   valor: number;
   idEmpresaAerea: number;
   idRota: number;
+  ticketsDisponiveis: number;
 }
 
 export interface VooSearchDTO {

@@ -13,6 +13,7 @@ import {
   Credentials,
   UserActions,
   PassengerDTO,
+  LoginDTO,
 } from "./types";
 import { loginService, registerService } from "../../services/userService";
 import { errorMessage } from "./messages";
@@ -25,10 +26,9 @@ export function* watchUser() {
 function* loginSagas(action: AnyAction) {
   try {
     const credentials: Credentials = action.payload.credentials;
-    const loggedUser: Airline | Administrator | Passenger = yield call(() =>
-      loginService(credentials)
-    );
+    const loggedUser: LoginDTO = yield call(() => loginService(credentials));
     yield put(loginSucess(loggedUser));
+    localStorage.setItem("user", String(loggedUser.user.id));
   } catch {
     yield put(loginError(errorMessage));
   }
