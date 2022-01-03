@@ -1,3 +1,13 @@
-.compra-list{   
-    margin-bottom: 16px;
+@import "../../utils/font.scss";
+
+.compra-list {
+  margin-bottom: 16px;
+}
+
+.typography-compras {
+  color: black;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-inline: auto;
+  width: 804px;
 }

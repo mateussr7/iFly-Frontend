@@ -36,7 +36,10 @@ function* registerSagas(action: AnyAction) {
   try {
     const user: PassengerDTO = action.payload.user;
     const newUser: Passenger = yield call(registerService, user);
-    yield put(registerNewUserSuccess(newUser));
+    const loggedUser: LoginDTO = { type: "passageiro", user: newUser };
+    //yield put(registerNewUserSuccess(newUser));
+    yield put(loginSucess(loggedUser));
+    localStorage.setItem("user", JSON.stringify(loggedUser));
   } catch {
     yield put(registerNewUserError(errorMessage));
   }

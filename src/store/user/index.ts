@@ -48,8 +48,8 @@ const userReducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
     case UserActions.LOGOUT: {
       return {
         ...state,
-        loggedUser: null
-      }
+        loggedUser: null,
+      };
     }
     default:
       return state;

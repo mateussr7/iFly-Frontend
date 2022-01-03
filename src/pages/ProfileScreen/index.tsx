@@ -16,19 +16,7 @@ import { fetchVooList } from "../../store/voo/actions";
 import { getLoggedUser } from "../../store/user/selectors";
 import { makeStyles, Typography } from "@material-ui/core";
 
-const useStyles = makeStyles({
-  custom: {
-    color: "black",
-    fontWeight: "bold",
-    fontSize: "32px",
-    margin: "1.5rem",
-    position: "relative",
-    left: "calc(50% - 400px)",
-  },
-});
-
 const ProfileScreen = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const user = useSelector(getLoggedUser);
   const compras: Compra[] = useSelector(getComprasByUser);
@@ -49,10 +37,7 @@ const ProfileScreen = () => {
       children={
         <div className="compra-list">
           <ProfileInfoCard user={user?.user as PassengerDTO} />
-          <Typography variant="h3" className={classes.custom}>
-            Minhas compras
-          </Typography>
-
+          <div className="typography-compras">Minhas compras</div>
           {compras.map((compra) => {
             var voo = voos.find((voo) => voo.id === compra.idVoo);
             var airline = airlines.find(
