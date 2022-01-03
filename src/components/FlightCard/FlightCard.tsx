@@ -49,7 +49,11 @@ const FlightCard = ({
       <div className="flight-action flex-row-column">
         <div className="flight-price">R$ {voo.valor}</div>
         <div className="flight-button">
-          <Button variant="contained" onClick={clickVoo}>
+          <Button
+            variant="contained"
+            onClick={clickVoo}
+            disabled={moment().isAfter(moment(voo.horario))}
+          >
             {isPassageiro ? "Comprar" : "Editar"}
           </Button>
         </div>

@@ -73,7 +73,7 @@ const PurchaseInfo = ({ voo, airline, compra }: props) => {
           <Button
             variant="contained"
             onClick={clickVoo}
-            disabled={!moment().isAfter(moment(voo.horario))}
+            disabled={moment().isAfter(moment(voo.horario))}
           >
             Cancelar
           </Button>
