@@ -1,9 +1,5 @@
 import { Reducer } from "redux";
-import {
-  LoginDTO,
-  UserActions,
-  UserState,
-} from "./types";
+import { LoginDTO, UserActions, UserState } from "./types";
 
 //const user = {id: 1, cpf: 'aaa', cnpj: 'a', email: 'aasdasdsa', nome: 'a', senha: 'dd'}
 
@@ -17,7 +13,7 @@ const INITIAL_STATE: UserState = {
 const userReducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case UserActions.LOGIN_SUCCESS: {
-      const user: LoginDTO = action.payload.user;
+      const user: LoginDTO = action.payload.login;
       return {
         ...state,
         error: false,

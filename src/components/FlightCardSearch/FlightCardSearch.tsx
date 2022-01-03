@@ -7,6 +7,7 @@ import { Aeroporto } from "../../store/airports/types";
 import { useDispatch } from "react-redux";
 import { fetchVooList } from "../../store/voo/actions";
 import { Airline } from "../../store/user/types";
+import moment from "moment";
 
 interface props {
   aeroportos: Aeroporto[];
@@ -16,7 +17,7 @@ interface props {
 const FlightCardSearch = ({ aeroportos, airline }: props) => {
   const [origin, setOrigin] = useState<number>(0);
   const [destiny, setDestiny] = useState<number>(0);
-  const [date, setDate] = useState<string>("2021-11-29");
+  const [date, setDate] = useState<string>(moment().format("yyyy-MM-DD"));
   const dispatch = useDispatch();
 
   const buscarVoos = () => {

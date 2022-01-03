@@ -12,8 +12,9 @@ import { editVoo, getRotaOriginDestiny } from "../../store/voo/actions";
 
 interface props {
   voo: Voo;
+  voltarFunction: () => void;
 }
-const EditFlightCard = ({ voo }: props) => {
+const EditFlightCard = ({ voo, voltarFunction }: props) => {
   const aeroportos = useSelector(getAeroportos);
   const [isEditing, setIsEditing] = useState<Boolean>(false);
   const [capacidade, setCapacidade] = useState<number>(voo.capacidade);
@@ -25,20 +26,16 @@ const EditFlightCard = ({ voo }: props) => {
   const idRota = useSelector(getIdRota);
 
   const [date, setDate] = useState<string>(
-    new Date(voo.horario.split(" ")[0]).toLocaleDateString()
+    moment(voo.horario).format("yyyy-MM-DD")
   );
+  const [hour, setHour] = useState<string>(moment(voo.horario).format("HH:mm"));
 
-  console.log(moment(new Date(voo.horario)));
-
-  console.log(moment(new Date(voo.horario)).format("DD/MM/YYYY"));
-  const [hour, setHour] = useState<string>(voo.horario.split(" ")[1]);
   const setNewValor = (event: any) => {
     if (event !== undefined) setValor(Number(event.target.value));
   };
   const setNewCapacidade = (event: any) => {
     if (event !== undefined) setCapacidade(Number(event.target.value));
   };
-  console.log(new Date(date + " " + hour));
   const setNewDate = (date: any) => {
     if (date !== undefined) setDate(date.target.value);
   };
@@ -61,22 +58,25 @@ const EditFlightCard = ({ voo }: props) => {
     if (newValue !== null) setDestiny(newValue.id);
   };
 
+  console.log(date);
+  console.log(hour);
+
   useEffect(() => {
     if (idRota && isEditing) {
+      setIsEditing(false);
       dispatch(
         editVoo({
           id,
           idRota,
           capacidade,
-          horario: new Date(date + " " + hour).toLocaleString(),
+          horario: moment(date + " " + hour).format("yyyy-MM-DD HH:mm:ss"),
           idEmpresaAerea: voo.idEmpresaAerea,
           ticketsDisponiveis: voo.ticketsDisponiveis,
           valor,
         })
       );
-      setIsEditing(false);
     }
-  }, [idRota]);
+  }, [idRota, isEditing]);
   const EditFlight = () => {
     dispatch(getRotaOriginDestiny(origin, destiny));
     setIsEditing(true);
@@ -178,6 +178,9 @@ const EditFlightCard = ({ voo }: props) => {
           <div className="flight-button">
             <Button variant="contained" onClick={EditFlight}>
               Salvar
+            </Button>
+            <Button variant="contained" onClick={voltarFunction}>
+              Voltar
             </Button>
           </div>
         </div>
