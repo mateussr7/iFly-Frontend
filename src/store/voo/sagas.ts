@@ -11,6 +11,7 @@ import {
   addVooSuccess,
   editVooSuccess,
   fetchVooListSuccess,
+  fetchVooListUserSuccess,
   getRotaOriginDestinySuccess,
   setOriginDestiny,
 } from "./actions";
@@ -31,8 +32,11 @@ function* fetchVoosSagas(action: AnyAction) {
     if (voo) {
       param = yield call(getVoos, voo);
       yield put(setOriginDestiny(voo));
-    } else param = yield call(getVoosByUserId, action.payload.idUser);
-    yield put(fetchVooListSuccess(param));
+      yield put(fetchVooListSuccess(param));
+    } else {
+      param = yield call(getVoosByUserId, action.payload.idUser);
+      yield put(fetchVooListUserSuccess(param));
+    }
     yield put(
       showMessage({
         message: "Busca efetuada",
