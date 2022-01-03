@@ -56,6 +56,7 @@ function* cancelCompraSagas(action: AnyAction) {
       })
     );
   } catch (err) {
+    console.log(err);
     yield put(
       showMessage({
         message: "Compra não cancelada",

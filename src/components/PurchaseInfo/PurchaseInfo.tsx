@@ -50,7 +50,7 @@ const PurchaseInfo = ({ voo, airline, compra }: props) => {
           </div>
           <div>
             Data:{" "}
-            {moment(voo.horario).utcOffset(6).format("DD/MM/yyyy - HH:mm")}
+            {moment(voo.horario).utcOffset(-6).format("DD/MM/yyyy - HH:mm")}
           </div>
         </div>
 
@@ -62,7 +62,7 @@ const PurchaseInfo = ({ voo, airline, compra }: props) => {
           </div>
           <div className="flight-capacity-available">
             Data da compra:{" "}
-            {moment(compra.data).utcOffset(6).format("DD/MM/yyyy")}
+            {moment(compra.data).utcOffset(-6).format("DD/MM/yyyy")}
           </div>
           <div className="flight-capacity">Valor: R${voo.valor}</div>
         </div>
@@ -73,7 +73,7 @@ const PurchaseInfo = ({ voo, airline, compra }: props) => {
           <Button
             variant="contained"
             onClick={clickVoo}
-            disabled={moment().isAfter(moment(voo.horario))}
+            disabled={!moment().isAfter(moment(voo.horario))}
           >
             Cancelar
           </Button>

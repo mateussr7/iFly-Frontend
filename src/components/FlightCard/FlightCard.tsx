@@ -37,7 +37,7 @@ const FlightCard = ({
         </div>
         <div className="small-infos flex-row">
           <div className="flight-hour">
-            Horário: {moment(voo.horario).utcOffset(6).format("HH:mm")}
+            Horário: {moment(voo.horario).utcOffset(-6).format("HH:mm")}
           </div>
           <div className="flight-capacity-available">
             Tickets para compra disponíveis:{" "}
