@@ -16,12 +16,15 @@ const OpenSidebar: FC<OpenSidebarProps> = ({
   return (
     <div className="sidebar">
       <ul>
-        {data.map((element, index) => (
-          <Link key={JSON.stringify(index)} to={element.ref}>
-            {element.icon}
-            <Typography>{element.label}</Typography>
-          </Link>
-        ))}
+        {data.map((element, index) => {
+          if (element.isVisible)
+            return (
+              <Link key={JSON.stringify(index)} to={element.ref}>
+                {element.icon}
+                <Typography>{element.label}</Typography>
+              </Link>
+            );
+        })}
       </ul>
     </div>
   );
