@@ -47,7 +47,7 @@ const vooReducer: Reducer<VooState> = (state = INITIAL_STATE, action) => {
       const filteredVoos = state.listVoo.slice();
       var voo = filteredVoos.find((v) => v.id === idVoo);
       if (voo !== undefined) {
-        voo.ticketsDisponiveis = voo.ticketsDisponiveis - 1;
+        voo.ticketsDisponiveis = voo.ticketsDisponiveis + 1;
       }
       return { ...state, listVoo: [...filteredVoos] };
     }
