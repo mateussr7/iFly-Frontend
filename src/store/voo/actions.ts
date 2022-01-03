@@ -2,7 +2,7 @@ import { action } from "typesafe-actions";
 import { VooActions, Voo, VooSearchDTO } from "./types";
 
 export const fetchVooList = (data?: VooSearchDTO, idUser?: number) =>
-  action(VooActions.FETCH_VOO_LIST, {data, idUser});
+  action(VooActions.FETCH_VOO_LIST, { data, idUser });
 
 export const fetchVooListSuccess = (data: Voo[]) =>
   action(VooActions.FETCH_VOO_LIST_SUCCESS, data);
@@ -28,3 +28,6 @@ export const getRotaOriginDestiny = (idOrigin: number, idDestiny: number) =>
 
 export const getRotaOriginDestinySuccess = (idRota: number) =>
   action(VooActions.GET_ROTA_ORIGIN_DESTINY_SUCCESS, idRota);
+
+export const updateCapacities = (data: number) =>
+  action(VooActions.UPDATE_CAPACITIES, data);

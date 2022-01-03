@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { VooState, VooActions, VooSearchDTO } from "./types";
+import { VooState, VooActions, VooSearchDTO, Voo } from "./types";
 
 const INITIAL_STATE: VooState = {
   listVoo: [],
@@ -41,6 +41,15 @@ const vooReducer: Reducer<VooState> = (state = INITIAL_STATE, action) => {
         ...state,
         idRota: action.payload,
       };
+    }
+    case VooActions.UPDATE_CAPACITIES: {
+      var idVoo: number = action.payload;
+      const filteredVoos = state.listVoo.slice();
+      var voo = filteredVoos.find((v) => v.id === idVoo);
+      if (voo !== undefined) {
+        voo.ticketsDisponiveis = voo.ticketsDisponiveis - 1;
+      }
+      return { ...state, listVoo: [...filteredVoos] };
     }
     default:
       return state;

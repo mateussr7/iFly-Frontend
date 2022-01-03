@@ -6,6 +6,7 @@ import {
   insertCompra,
 } from "../../services/compraServices";
 import { showMessage } from "../feedback/actions";
+import { updateCapacities } from "../voo/actions";
 import {
   fetchCompraListSuccess,
   insertCompraSuccess,
@@ -70,6 +71,7 @@ function* insertCompraSagas(action: AnyAction) {
     const compra: Compra = action.payload;
     const param: Compra = yield call(insertCompra, compra);
     yield put(insertCompraSuccess(param));
+    yield put(updateCapacities(param.idVoo));
     yield put(
       showMessage({
         message: "Compra efetuada",
