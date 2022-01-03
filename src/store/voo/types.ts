@@ -17,6 +17,7 @@ export interface VooSearchDTO {
 
 export interface VooState {
   listVoo: Voo[];
+  listVooUser: Voo[];
   voo: Voo | undefined;
   originId: number;
   destinyId: number;
@@ -31,6 +32,7 @@ export interface OrigDestRota {
 export enum VooActions {
   FETCH_VOO_LIST = "@voo/FETCH_VOO_LIST",
   FETCH_VOO_LIST_SUCCESS = "@voo/FETCH_VOO_LIST_SUCCESS",
+  FETCH_VOO_LIST_USER_SUCCESS = "@voo/FETCH_VOO_LIST_USER_SUCCESS",
   FETCH_VOO_LIST_BY_USER_ID = "@voo/FETCH_VOO_LIST_BY_USER_ID",
   FETCH_VOO_LIST_BY_USER_ID_SUCESS = "@voo/FETCH_VOO_LIST_BY_USER_ID_SUCESS",
   ADD_VOO = "@voo/ADD_VOO",

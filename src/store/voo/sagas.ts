@@ -6,6 +6,7 @@ import {
   addVooSuccess,
   editVooSuccess,
   fetchVooListSuccess,
+  fetchVooListUserSuccess,
   getRotaOriginDestinySuccess,
   setOriginDestiny,
 } from "./actions";
@@ -25,10 +26,13 @@ function* fetchVoosSagas(action: AnyAction) {
     if(voo){
       param = yield call(getVoos, voo);
       yield put(setOriginDestiny(voo));
+      yield put(fetchVooListSuccess(param));
     }
-    else
+    else{
       param = yield call(getVoosByUserId, action.payload.idUser);
-    yield put(fetchVooListSuccess(param));
+      yield put(fetchVooListUserSuccess(param));
+    }
+    
   } catch (err) {}
 }
 

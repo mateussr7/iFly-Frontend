@@ -3,6 +3,7 @@ import { VooState, VooActions, VooSearchDTO } from "./types";
 
 const INITIAL_STATE: VooState = {
   listVoo: [],
+  listVooUser: [],
   voo: undefined,
   originId: 0,
   destinyId: 0,
@@ -13,6 +14,9 @@ const vooReducer: Reducer<VooState> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case VooActions.FETCH_VOO_LIST_SUCCESS: {
       return { ...state, listVoo: [...action.payload] };
+    }
+    case VooActions.FETCH_VOO_LIST_USER_SUCCESS: {
+      return { ...state, listVooUser: [...action.payload] };
     }
     case VooActions.ADD_VOO_SUCCESS: {
       const voos = state.listVoo;

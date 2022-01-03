@@ -5,7 +5,7 @@ import { getComprasByUser } from "../../store/compra/selectors";
 import PurchaseInfo from "../../components/PurchaseInfo/PurchaseInfo";
 import { fetchAirlines } from "../../store/airlines/selectors";
 import "./ProfileScreen.scss";
-import { getVooList } from "../../store/voo/selectors";
+import { getVooListUser } from "../../store/voo/selectors";
 import { Voo } from "../../store/voo/types";
 import { useEffect } from "react";
 import { Airline, PassengerDTO } from "../../store/user/types";
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     margin: "1.5rem",
     position: "relative",
     left: "calc(50% - 400px)",
-  }
+  },
 });
 
 const ProfileScreen = () => {
@@ -32,9 +32,9 @@ const ProfileScreen = () => {
   const dispatch = useDispatch();
   const user = useSelector(getLoggedUser);
   const compras: Compra[] = useSelector(getComprasByUser);
-  const voos: Voo[] = useSelector(getVooList);
+  const voos: Voo[] = useSelector(getVooListUser);
   const airlines: Airline[] = useSelector(fetchAirlines);
-  
+
   useEffect(() => {
     if (user) {
       dispatch(fetchCompraList(user.user.id));
@@ -43,26 +43,32 @@ const ProfileScreen = () => {
     dispatch(getAllAirlines());
   }, []);
 
-  return ( 
+  return (
     <PageHeader
       title="Perfil"
       children={
         <div className="compra-list">
           <ProfileInfoCard user={user?.user as PassengerDTO} />
-          <Typography variant="h3" className={classes.custom}>Minhas compras</Typography>
-          
-            {compras.map((compra) => {
-              var voo = voos.find((voo) => voo.id === compra.idVoo);
-              var airline = airlines.find(
-                (airline) => airline.id === voo?.idEmpresaAerea
-              );
-              if(voo && airline)
+          <Typography variant="h3" className={classes.custom}>
+            Minhas compras
+          </Typography>
+
+          {compras.map((compra) => {
+            var voo = voos.find((voo) => voo.id === compra.idVoo);
+            var airline = airlines.find(
+              (airline) => airline.id === voo?.idEmpresaAerea
+            );
+            if (voo && airline)
               return (
-                <PurchaseInfo key={compra.idVoo} airline={airline as Airline} voo={voo as Voo} compra={compra}/>
+                <PurchaseInfo
+                  key={compra.idVoo}
+                  airline={airline as Airline}
+                  voo={voo as Voo}
+                  compra={compra}
+                />
               );
-            })}
-          
-          </div>
+          })}
+        </div>
       }
     />
   );

@@ -13,3 +13,6 @@ export const getDestiny = ({ vooReducer }: ApplicationState) =>
 
 export const getIdRota = ({ vooReducer }: ApplicationState) =>
   vooReducer.idRota;
+
+  export const getVooListUser = ({ vooReducer }: ApplicationState) =>
+  vooReducer.listVooUser;
