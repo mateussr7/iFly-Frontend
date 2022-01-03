@@ -32,7 +32,7 @@ const LoginComponent: FC<{}> = () => {
   return (
     <div className="login-body">
       <div className="login-container">
-        <img src={logo}></img>
+        <img src={logo} alt="ifly"></img>
         <div className="login-box">
           <Typography>Email</Typography>
           <TextField

@@ -19,10 +19,12 @@ export interface LoginDTO {
 
 export interface Airline extends User {
   cnpj: string;
+  idAdministrador: number
 }
 
 export interface AirlineDTO extends UserDTO {
   cnpj: string;
+  idAdministrador: number
 }
 
 export interface Passenger extends User {

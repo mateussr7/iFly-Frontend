@@ -3,6 +3,7 @@ import { AirlineState, AirlinesActions } from "./types";
 
 const INITIAL_STATE: AirlineState = {
   airlines: [],
+  airline: null
 };
 
 const airlineReducer: Reducer<AirlineState> = (
@@ -34,7 +35,13 @@ const airlineReducer: Reducer<AirlineState> = (
         airlines: [...filteredAirlines, airline],
       };
     }
-
+    case AirlinesActions.SET_AIRLINE_IN_VIEW: {
+      const airline = action.payload.Airline
+      return {
+        ...state,
+        airline: airline
+      }
+    }
     default:
       return state;
   }

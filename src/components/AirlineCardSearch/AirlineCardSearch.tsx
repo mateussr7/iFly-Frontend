@@ -6,8 +6,8 @@ import SearchIcon from "@material-ui/icons/Search";
 const AirlineCardSearch = () => {
   return <div className="card-search">
     <div className="text-box">
-      <Typography>Nome ou código da Linha Aérea</Typography>
       <TextField 
+        label="Nome ou código da Linha Aérea"
         variant="outlined"
       />
     </div>

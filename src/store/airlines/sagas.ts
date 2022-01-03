@@ -29,6 +29,7 @@ function* fetchAllAirlinesSagas(action: AnyAction) {
 function* insertAirlineSagas(action: AnyAction) {
   try {
     const dto: AirlineDTO = action.payload.airline;
+    console.log(dto)
     const airline: Airline = yield call(() => insertAirlineService(dto));
     yield put(insertAirlineSuccess(airline));
   } catch {}

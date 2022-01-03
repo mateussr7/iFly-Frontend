@@ -8,3 +8,4 @@ export const updateAirline = (airline: AirlineDTO) => action(AirlinesActions.UPD
 export const updateAirlineSuccess = (airline: Airline) => action(AirlinesActions.UPDATE_AIRLINE_SUCCESS, { airline })
 export const insertAirline = (airline: AirlineDTO) => action(AirlinesActions.INSERT_AIRLINE, { airline })
 export const insertAirlineSuccess = (airline: Airline) => action(AirlinesActions.INSERT_AIRLINE_SUCCESS, { airline }) 
+export const setAirlineInView = (airline: Airline) => action(AirlinesActions.SET_AIRLINE_IN_VIEW, { airline })
