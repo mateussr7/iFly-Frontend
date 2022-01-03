@@ -1,0 +1,68 @@
+@import "../../utils/colors.scss";
+
+.flex-row-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.save-flight-card {
+  font-weight: bold;
+  margin-top: 16px !important;
+  margin: auto;
+  width: 783px;
+  //width: 58vw;
+  //height: 17vh;
+  height: 250px;
+  background: #f7fdff;
+  box-shadow: 0px 1.5px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 17px;
+
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+  }
+  .MuiInputBase-input {
+    background-color: #f7fdff !important;
+  }
+
+  .textfield-date {
+    overflow-x: hidden !important;
+    width: 180px;
+  }
+  .textfield-hour {
+    overflow-x: hidden !important;
+    width: 140px;
+  }
+  .textfield-valor {
+    overflow-x: hidden !important;
+    width: 140px;
+  }
+  .textfield-capacidade {
+    overflow-x: hidden !important;
+    width: 140px;
+  }
+
+  .textfield-search {
+    overflow-x: hidden !important;
+    width: 250px;
+  }
+
+  .flight-button {
+    width: fit-content;
+    margin-block: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 8px;
+    button {
+      background-color: $white;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 9px;
+      font-weight: bold;
+    }
+  }
+}

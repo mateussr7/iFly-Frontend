@@ -15,10 +15,14 @@ const vooReducer: Reducer<VooState> = (state = INITIAL_STATE, action) => {
       return { ...state, listVoo: [...action.payload] };
     }
     case VooActions.ADD_VOO_SUCCESS: {
-      return { ...state, voo: action.payload };
+      const voos = state.listVoo;
+      return { ...state, listVoo: [...voos, action.payload] };
     }
     case VooActions.EDIT_VOO_SUCCESS: {
-      return { ...state, voo: action.payload };
+      const filteredVoos = state.listVoo.filter(
+        (v) => v.id !== action.payload.id
+      );
+      return { ...state, listVoo: [...filteredVoos, action.payload] };
     }
     case VooActions.SET_ORIGIN_DESTINY: {
       const vooSearchDTO: VooSearchDTO = action.payload;

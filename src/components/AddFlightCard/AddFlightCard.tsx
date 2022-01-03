@@ -2,35 +2,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, InputAdornment, TextField } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { Voo } from "../../store/voo/types";
-import "./EditFlightCard.scss";
+import "./AddFlightCard.scss";
 import { getAeroportos } from "../../store/airports/selectors";
 import { Autocomplete } from "@material-ui/lab";
 import { Aeroporto } from "../../store/airports/types";
-import { getDestiny, getIdRota, getOrigin } from "../../store/voo/selectors";
+import { getIdRota } from "../../store/voo/selectors";
 import moment from "moment";
-import { editVoo, getRotaOriginDestiny } from "../../store/voo/actions";
+import { addVoo, getRotaOriginDestiny } from "../../store/voo/actions";
+import { Airline } from "../../store/user/types";
 
 interface props {
-  voo: Voo;
+  airline: Airline;
   voltarFunction: () => void;
 }
-const EditFlightCard = ({ voo, voltarFunction }: props) => {
+const AddFlightCard = ({ airline, voltarFunction }: props) => {
   const aeroportos = useSelector(getAeroportos);
-  const [isEditing, setIsEditing] = useState<Boolean>(false);
-  const [capacidade, setCapacidade] = useState<number>(voo.capacidade);
-  const [valor, setValor] = useState<number>(voo.valor);
-  const [origin, setOrigin] = useState<number>(useSelector(getOrigin));
-  const [destiny, setDestiny] = useState<number>(useSelector(getDestiny));
-  const id = voo.id;
+  const [isSaving, setIsSaving] = useState<Boolean>(false);
+  const [capacidade, setCapacidade] = useState<number>();
+  const [valor, setValor] = useState<number>();
+  const [origin, setOrigin] = useState<number>();
+  const [destiny, setDestiny] = useState<number>();
   const dispatch = useDispatch();
   const idRota = useSelector(getIdRota);
-
-  const [date, setDate] = useState<string>(
-    moment(voo.horario).format("yyyy-MM-DD")
-  );
-  const [hour, setHour] = useState<string>(
-    moment(voo.horario).zone(6).format("HH:mm")
-  );
+  const [date, setDate] = useState<string>(moment().format("yyyy-MM-DD"));
+  const [hour, setHour] = useState<string>(moment().format("HH:mm"));
 
   const setNewValor = (event: any) => {
     if (event !== undefined) setValor(Number(event.target.value));
@@ -61,31 +56,31 @@ const EditFlightCard = ({ voo, voltarFunction }: props) => {
   };
 
   useEffect(() => {
-    if (idRota && isEditing) {
-      setIsEditing(false);
+    if (idRota && isSaving && valor && capacidade) {
+      setIsSaving(false);
       dispatch(
-        editVoo({
-          id,
+        addVoo({
           idRota,
           capacidade,
           horario: moment(date + " " + hour)
             .utc()
             .format("yyyy-MM-DD HH:mm:ss"),
-          idEmpresaAerea: voo.idEmpresaAerea,
-          ticketsDisponiveis: voo.ticketsDisponiveis,
+          idEmpresaAerea: airline.id,
+          ticketsDisponiveis: capacidade,
           valor,
+          id: 0,
         })
       );
       voltarFunction();
     }
-  }, [idRota, isEditing]);
-  const EditFlight = () => {
-    dispatch(getRotaOriginDestiny(origin, destiny));
-    setIsEditing(true);
+  }, [idRota, isSaving]);
+  const SaveFlight = () => {
+    dispatch(getRotaOriginDestiny(origin as number, destiny as number));
+    setIsSaving(true);
   };
   return (
     <>
-      <div className="edit-flight-card flex-row-column">
+      <div className="save-flight-card flex-row-column">
         <div className="first-line flex-row">
           <TextField
             variant="outlined"
@@ -101,15 +96,19 @@ const EditFlightCard = ({ voo, voltarFunction }: props) => {
           />
           <TextField
             variant="outlined"
-            label="Capcidade do voo"
+            label="Capacidade"
             value={capacidade}
             className="textfield-capacidade"
             onChange={setNewCapacidade}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">Pessoas</InputAdornment>
-              ),
-            }}
+            InputProps={
+              capacidade
+                ? {
+                    endAdornment: (
+                      <InputAdornment position="end">Pessoas</InputAdornment>
+                    ),
+                  }
+                : {}
+            }
           />
           <TextField
             variant="outlined"
@@ -178,7 +177,7 @@ const EditFlightCard = ({ voo, voltarFunction }: props) => {
             />
           </div>
           <div className="flight-button">
-            <Button variant="contained" onClick={EditFlight}>
+            <Button variant="contained" onClick={SaveFlight}>
               Salvar
             </Button>
             <Button variant="contained" onClick={voltarFunction}>
@@ -191,4 +190,4 @@ const EditFlightCard = ({ voo, voltarFunction }: props) => {
   );
 };
 
-export default EditFlightCard;
+export default AddFlightCard;

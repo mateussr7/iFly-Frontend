@@ -7,6 +7,10 @@ import VooScreen from "../VooScreen";
 import AirlineScreen from "../AirlinesScreen";
 
 const MainScreen: FC<{}> = () => {
+  const Loggout = () => {
+    localStorage.removeItem("user");
+    return <></>;
+  };
   return (
     <>
       <Header />
@@ -14,6 +18,7 @@ const MainScreen: FC<{}> = () => {
       <Routes>
         <Route path="/flights" element={<VooScreen />} />
         <Route path="/airlines" element={<AirlineScreen />} />
+        <Route path="/logout" element={<Loggout />} />
       </Routes>
     </>
   );

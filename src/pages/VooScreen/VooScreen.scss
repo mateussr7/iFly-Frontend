@@ -1,0 +1,14 @@
+@import "../../utils/colors.scss";
+
+.addButton {
+  width: 804px;
+  margin-inline: auto;
+  button {
+    margin-block: 16px;
+    float: right;
+    background-color: $white;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    font-weight: bold;
+  }
+}

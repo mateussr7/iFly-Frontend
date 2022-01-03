@@ -2,12 +2,13 @@ import { IconButton, TextField } from "@material-ui/core";
 import "./FlightCardSearch.scss";
 import SearchIcon from "@material-ui/icons/Search";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Aeroporto } from "../../store/airports/types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchVooList } from "../../store/voo/actions";
 import { Airline } from "../../store/user/types";
 import moment from "moment";
+import { getDestiny, getOrigin } from "../../store/voo/selectors";
 
 interface props {
   aeroportos: Aeroporto[];
@@ -15,8 +16,8 @@ interface props {
 }
 
 const FlightCardSearch = ({ aeroportos, airline }: props) => {
-  const [origin, setOrigin] = useState<number>(0);
-  const [destiny, setDestiny] = useState<number>(0);
+  const [origin, setOrigin] = useState<number>(useSelector(getOrigin));
+  const [destiny, setDestiny] = useState<number>(useSelector(getDestiny));
   const [date, setDate] = useState<string>(moment().format("yyyy-MM-DD"));
   const dispatch = useDispatch();
 
@@ -56,6 +57,7 @@ const FlightCardSearch = ({ aeroportos, airline }: props) => {
           <Autocomplete
             className="textfield-search"
             options={aeroportos}
+            value={aeroportos.find((a) => a.id === origin)}
             getOptionLabel={(option) =>
               option.nome + " (" + option.codigo + ")"
             }
@@ -74,6 +76,7 @@ const FlightCardSearch = ({ aeroportos, airline }: props) => {
           <Autocomplete
             className="textfield-search"
             options={aeroportos}
+            value={aeroportos.find((a) => a.id === destiny)}
             getOptionLabel={(option) =>
               option.nome + " (" + option.codigo + ")"
             }

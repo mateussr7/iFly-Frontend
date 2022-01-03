@@ -1,4 +1,5 @@
 import { Button } from "@material-ui/core";
+import moment from "moment";
 import React from "react";
 import { useSelector } from "react-redux";
 import { fetchAirlines } from "../../store/airlines/selectors";
@@ -8,7 +9,6 @@ import "./FlightCard.scss";
 
 interface props {
   voo: Voo;
-  airline?: Airline;
   isPassageiro: Boolean;
   isAirline: Boolean;
   onClickAirline: (newVoo: Voo) => void;
@@ -16,14 +16,12 @@ interface props {
 }
 const FlightCard = ({
   voo,
-  airline,
   isPassageiro,
   isAirline,
   onClickAirline,
   onClickPassageiro,
 }: props) => {
   const airlines: Airline[] = useSelector(fetchAirlines);
-  console.log(airlines);
 
   const clickVoo = () => {
     if (isAirline) onClickAirline(voo);
@@ -39,10 +37,7 @@ const FlightCard = ({
         </div>
         <div className="small-infos flex-row">
           <div className="flight-hour">
-            Horário:{" "}
-            {voo.horario.toString().split(" ")[1].split(":")[0] +
-              ":" +
-              voo.horario.toString().split(" ")[1].split(":")[1]}
+            Horário: {moment(voo.horario).zone(6).format("HH:mm")}
           </div>
           <div className="flight-capacity-available">
             Tickets para compra disponíveis:{" "}
@@ -55,7 +50,7 @@ const FlightCard = ({
         <div className="flight-price">R$ {voo.valor}</div>
         <div className="flight-button">
           <Button variant="contained" onClick={clickVoo}>
-            {airline ? "Editar" : "Comprar"}
+            {isPassageiro ? "Comprar" : "Editar"}
           </Button>
         </div>
       </div>

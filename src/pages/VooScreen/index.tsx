@@ -1,6 +1,8 @@
+import { Button } from "@material-ui/core";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import AddFlightCard from "../../components/AddFlightCard/AddFlightCard";
 import EditFlightCard from "../../components/EditFlightCard/EditFlightCard";
 import FlightCard from "../../components/FlightCard/FlightCard";
 import FlightCardSearch from "../../components/FlightCardSearch/FlightCardSearch";
@@ -10,8 +12,10 @@ import { fetchAeroportoList } from "../../store/airports/actions";
 import { getAeroportos } from "../../store/airports/selectors";
 import { insertCompra } from "../../store/compra/actions";
 import { getLoggedUser } from "../../store/user/selectors";
+import { Airline } from "../../store/user/types";
 import { getVooList } from "../../store/voo/selectors";
 import { Voo } from "../../store/voo/types";
+import "./VooScreen.scss";
 
 const VooScreen = () => {
   const dispatch = useDispatch();
@@ -36,10 +40,12 @@ const VooScreen = () => {
     dispatch(getAllAirlines());
   }, []);
 
-  useEffect(() => {}, [passageiro, airline]);
-
   const setEditFalse = () => {
     setEdit(false);
+  };
+
+  const setAddFalse = () => {
+    setAdd(false);
   };
 
   const comprarVoo = (newVoo: Voo) => {
@@ -65,7 +71,7 @@ const VooScreen = () => {
     <>
       {!edit && !add && (
         <PageHeader
-          title="Comprar Voo"
+          title={passageiro ? "Comprar Voos" : "Visualizar Voos"}
           children={
             <>
               <FlightCardSearch aeroportos={aeroportos} />
@@ -79,6 +85,13 @@ const VooScreen = () => {
                   isPassageiro={passageiro}
                 />
               ))}
+              {airline && (
+                <div className="addButton">
+                  <Button variant="contained" onClick={setAddVoo}>
+                    Adicionar Voo
+                  </Button>
+                </div>
+              )}
             </>
           }
         />
@@ -87,6 +100,17 @@ const VooScreen = () => {
         <PageHeader
           title="Editar Voo"
           children={<EditFlightCard voo={voo!} voltarFunction={setEditFalse} />}
+        />
+      )}
+      {!edit && add && (
+        <PageHeader
+          title="Adicionar Voo"
+          children={
+            <AddFlightCard
+              airline={loggedUser!.user as Airline}
+              voltarFunction={setAddFalse}
+            />
+          }
         />
       )}
     </>

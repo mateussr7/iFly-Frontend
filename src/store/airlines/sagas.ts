@@ -22,7 +22,6 @@ export function* watchAirlines() {
 function* fetchAllAirlinesSagas(action: AnyAction) {
   try {
     const airlines: Airline[] = yield call(getAllAirlinesService);
-    console.log(airlines);
     yield put(getAllAirlinesSuccess(airlines));
   } catch {}
 }
