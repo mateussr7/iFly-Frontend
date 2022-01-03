@@ -27,6 +27,7 @@ export interface AirlineDTO extends UserDTO {
 
 export interface Passenger extends User {
   cpf: string;
+  quilometragemVoada: number
 }
 
 export interface PassengerDTO extends UserDTO {

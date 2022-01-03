@@ -9,6 +9,7 @@ import { AeroportoState } from "./airports/types";
 
 import { CompraState } from "./compra/types";
 import { AirlineState } from "./airlines/types";
+import { PassengerState } from "./passenger/types";
 
 export interface ApplicationState {
   sidebarReducer: SideBarState;
@@ -18,6 +19,7 @@ export interface ApplicationState {
 
   compraReducer: CompraState;
   airlineReducer: AirlineState;
+  passengerReducer: PassengerState;
 }
 
 const sagaMiddleware = createSagaMiddleware();

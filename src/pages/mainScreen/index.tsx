@@ -5,6 +5,7 @@ import SideBar from "../../components/sidebar";
 import "./style.scss";
 import VooScreen from "../VooScreen";
 import AirlineScreen from "../AirlinesScreen";
+import RankingScreen from "../RankingScreen";
 
 const MainScreen: FC<{}> = () => {
   const Loggout = () => {
@@ -19,6 +20,7 @@ const MainScreen: FC<{}> = () => {
         <Route path="/flights" element={<VooScreen />} />
         <Route path="/airlines" element={<AirlineScreen />} />
         <Route path="/logout" element={<Loggout />} />
+        <Route path="/ranking" element={<RankingScreen />} />
       </Routes>
     </>
   );

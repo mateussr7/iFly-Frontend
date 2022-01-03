@@ -28,3 +28,8 @@ export async function registerService(
   );
   return data;
 }
+
+export async function getRankingService(): Promise<Passenger[]> {
+  const { data } = await axios.get(getWebserviceURL("/user/ranking"))
+  return data;
+}
