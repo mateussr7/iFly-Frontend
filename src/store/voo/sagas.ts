@@ -1,6 +1,6 @@
 import { AnyAction } from "redux";
 import { call, put, takeLatest } from "redux-saga/effects";
-import { getVoos, insertVoo, updateVoo } from "../../services/vooServices";
+import { getVoos, getVoosByUserId, insertVoo, updateVoo } from "../../services/vooServices";
 import { getIdRota } from "../../services/rotaServices";
 import {
   addVooSuccess,
@@ -20,9 +20,14 @@ export default function* watchVoos() {
 
 function* fetchVoosSagas(action: AnyAction) {
   try {
-    const voo: VooSearchDTO = action.payload;
-    const param: Voo[] = yield call(getVoos, voo);
-    yield put(setOriginDestiny(voo));
+    const voo: VooSearchDTO = action.payload.data;
+    var param: Voo[];
+    if(voo){
+      param = yield call(getVoos, voo);
+      yield put(setOriginDestiny(voo));
+    }
+    else
+      param = yield call(getVoosByUserId, action.payload.idUser);
     yield put(fetchVooListSuccess(param));
   } catch (err) {}
 }

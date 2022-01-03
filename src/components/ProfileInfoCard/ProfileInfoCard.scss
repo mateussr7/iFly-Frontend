@@ -1,0 +1,53 @@
+@import "../../utils/colors.scss";
+
+.profile-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+}
+.profile-card {
+    background: #f7fdff;
+    box-shadow: 0px 1.5px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 17px;
+    //width: 55vw;
+    width: 804px;
+    height: auto;
+    margin: 2.5vh auto auto auto;
+
+    .top-textfields{
+        margin: 1.5rem 1.5rem 0.8rem 1.5rem;
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+
+    .bottom-textfields{
+        margin: 0.8rem 1.5rem 1.5rem 1.5rem;
+        width: auto;
+        height: auto;
+    }
+
+
+    .textfield-profile{
+        width: 100%;
+        .MuiInputBase-input {
+            background-color: #f3f3f3;
+            color: gray;
+          } 
+    }
+    .nome {
+        width: 40%;
+    }
+    .cpf{
+        width: 28%;
+    }
+    .kmvoada{
+        width: 28%;
+    }
+    .email{
+        width: 40%;
+    }
+}

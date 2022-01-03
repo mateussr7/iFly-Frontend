@@ -35,7 +35,6 @@ function* loginSagas(action: AnyAction) {
 function* registerSagas(action: AnyAction) {
   try {
     const user: PassengerDTO = action.payload.user;
-    console.log(user);
     const newUser: Passenger = yield call(registerService, user);
     yield put(registerNewUserSuccess(newUser));
   } catch {

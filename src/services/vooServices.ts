@@ -30,3 +30,10 @@ export async function getSeatsOccupied(idVoo: number): Promise<number[]> {
   });
   return data;
 }
+
+export async function getVoosByUserId(userId: number): Promise<Voo[]> {
+  const { data } = await axios.get(getWebserviceURL("/voo/getVoosByUserId"), {
+    params: { userId },
+  });
+  return data;
+}

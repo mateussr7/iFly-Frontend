@@ -21,7 +21,6 @@ export async function loginService(
 export async function registerService(
   passenger: PassengerDTO
 ): Promise<Passenger> {
-  console.log(passenger);
   const { data } = await axios.post(
     getWebserviceURL("/user/new-passenger"),
     passenger,
