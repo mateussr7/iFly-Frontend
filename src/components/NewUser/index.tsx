@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { registerNewUser } from "../../store/user/actions";
 import Footer from "../footer";
 import "./newUser.scss";
+import logo from "../../images/logo.png";
 
 const NewUserComponent: FC<{}> = () => {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const NewUserComponent: FC<{}> = () => {
   return (
     <div className="body">
       <div className="container">
-        LOGO
+        <img src={logo}></img>
         <div className="box">
           <Typography>Email</Typography>
           <TextField
