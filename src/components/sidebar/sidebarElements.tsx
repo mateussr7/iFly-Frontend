@@ -3,10 +3,14 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import EmojiEventsIcon from "@material-ui/icons/EmojiEvents";
 import CloseIcon from "@material-ui/icons/Close";
 import { SidebarType } from "../../store/side-bar/types";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getLoggedUser } from "../../store/user/selectors";
+import { logout } from "../../store/user/actions";
 const SidebarElementsComponent = () => {
   const loggedUser = useSelector(getLoggedUser);
+
+  const dispatch = useDispatch();
+
   const sidebarElements: SidebarType[] = [
     {
       label: "Voos",
@@ -14,6 +18,7 @@ const SidebarElementsComponent = () => {
       icon: <FlightIcon />,
       ref: "/flights",
       isVisible: loggedUser ? loggedUser.type !== "admin" : false,
+      onClick: () => {}
     },
     {
       label: "Ranking",
@@ -21,6 +26,7 @@ const SidebarElementsComponent = () => {
       icon: <EmojiEventsIcon></EmojiEventsIcon>,
       ref: "/ranking",
       isVisible: true,
+      onClick: () => {}
     },
     {
       label: "Perfil",
@@ -28,6 +34,7 @@ const SidebarElementsComponent = () => {
       icon: <AccountCircleIcon />,
       ref: "/profile",
       isVisible: loggedUser ? loggedUser.type === "passageiro" : false,
+      onClick: () => {}
     },
     {
       label: "Linhas Aereas",
@@ -35,13 +42,19 @@ const SidebarElementsComponent = () => {
       icon: <FlightIcon />,
       ref: "/airlines",
       isVisible: loggedUser ? loggedUser.type === "admin" : false,
+      onClick: () => {}
     },
     {
       label: "Sair",
       admin: true,
       icon: <CloseIcon />,
-      ref: "/logout",
+      ref: "/",
       isVisible: true,
+      onClick: () => {
+        localStorage.clear()
+        dispatch(logout())
+        window.location.reload()
+      }
     },
   ];
   return sidebarElements;

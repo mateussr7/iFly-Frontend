@@ -19,7 +19,7 @@ const OpenSidebar: FC<OpenSidebarProps> = ({
         {data.map((element, index) => {
           if (element.isVisible)
             return (
-              <Link key={JSON.stringify(index)} to={element.ref}>
+              <Link key={JSON.stringify(index)} to={element.ref} onClick={element.onClick}>
                 {element.icon}
                 <Typography>{element.label}</Typography>
               </Link>

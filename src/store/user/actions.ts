@@ -21,3 +21,4 @@ export const registerNewUserSuccess = (user: Passenger) =>
   action(UserActions.REGISTER_NEW_USER_SUCCESS, { user });
 export const registerNewUserError = (message: string) =>
   action(UserActions.REGISTER_NEW_USER_ERROR, { message });
+export const logout = () => action(UserActions.LOGOUT)

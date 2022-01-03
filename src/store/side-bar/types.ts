@@ -10,6 +10,7 @@ export interface SidebarType {
   icon: ReactElement;
   ref: string;
   isVisible: Boolean;
+  onClick: () => void
 }
 
 export enum SideBarActions {
