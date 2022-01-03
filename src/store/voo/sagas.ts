@@ -1,6 +1,11 @@
 import { AnyAction } from "redux";
 import { call, put, takeLatest } from "redux-saga/effects";
-import { getVoos, getVoosByUserId, insertVoo, updateVoo } from "../../services/vooServices";
+import {
+  getVoos,
+  getVoosByUserId,
+  insertVoo,
+  updateVoo,
+} from "../../services/vooServices";
 import { getIdRota } from "../../services/rotaServices";
 import {
   addVooSuccess,
@@ -10,6 +15,7 @@ import {
   setOriginDestiny,
 } from "./actions";
 import { Voo, VooActions, VooSearchDTO } from "./types";
+import { showMessage } from "../feedback/actions";
 
 export default function* watchVoos() {
   yield takeLatest(VooActions.FETCH_VOO_LIST, fetchVoosSagas);
@@ -22,14 +28,27 @@ function* fetchVoosSagas(action: AnyAction) {
   try {
     const voo: VooSearchDTO = action.payload.data;
     var param: Voo[];
-    if(voo){
+    if (voo) {
       param = yield call(getVoos, voo);
       yield put(setOriginDestiny(voo));
-    }
-    else
-      param = yield call(getVoosByUserId, action.payload.idUser);
+    } else param = yield call(getVoosByUserId, action.payload.idUser);
     yield put(fetchVooListSuccess(param));
-  } catch (err) {}
+    yield put(
+      showMessage({
+        message: "Busca efetuada",
+        show: true,
+        type: "success",
+      })
+    );
+  } catch (err) {
+    yield put(
+      showMessage({
+        message: "Busca não efetuada",
+        show: true,
+        type: "failure",
+      })
+    );
+  }
 }
 
 function* addVoosagas(action: AnyAction) {
@@ -37,7 +56,22 @@ function* addVoosagas(action: AnyAction) {
   try {
     const param: Voo = yield call(insertVoo, dto);
     yield put(addVooSuccess(param));
-  } catch (err) {}
+    yield put(
+      showMessage({
+        message: "Adicionado com sucesso",
+        show: true,
+        type: "success",
+      })
+    );
+  } catch (err) {
+    yield put(
+      showMessage({
+        message: "Não foi possível adicionar",
+        show: true,
+        type: "failure",
+      })
+    );
+  }
 }
 
 function* editVooSagas(data: AnyAction) {
@@ -45,7 +79,22 @@ function* editVooSagas(data: AnyAction) {
   try {
     const param: Voo = yield call(updateVoo, voo);
     yield put(editVooSuccess(param));
-  } catch (err) {}
+    yield put(
+      showMessage({
+        message: "Editado com sucesso",
+        show: true,
+        type: "success",
+      })
+    );
+  } catch (err) {
+    yield put(
+      showMessage({
+        message: "Não foi possivel adicionar",
+        show: true,
+        type: "failure",
+      })
+    );
+  }
 }
 
 function* getRotaId(data: AnyAction) {

@@ -7,6 +7,7 @@ import CredentialsScreen from "./pages/credentialsScreen";
 import "./app.scss";
 import { LoginDTO } from "./store/user/types";
 import { loginSucess } from "./store/user/actions";
+import SnackBarComponent from "./components/Feedback/Snackbar";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const App = () => {
     <BrowserRouter>
       <div className="view">
         {userLogged !== null ? <MainScreen /> : <CredentialsScreen />}
+        <SnackBarComponent />
       </div>
     </BrowserRouter>
   );

@@ -10,13 +10,14 @@ import { AeroportoState } from "./airports/types";
 import { CompraState } from "./compra/types";
 import { AirlineState } from "./airlines/types";
 import { PassengerState } from "./passenger/types";
+import { FeedBackState } from "./feedback/types";
 
 export interface ApplicationState {
   sidebarReducer: SideBarState;
   userReducer: UserState;
   vooReducer: VooState;
   aeroportoReducer: AeroportoState;
-
+  feedbackReducer: FeedBackState;
   compraReducer: CompraState;
   airlineReducer: AirlineState;
   passengerReducer: PassengerState;

@@ -29,7 +29,7 @@ const EditFlightCard = ({ voo, voltarFunction }: props) => {
     moment(voo.horario).format("yyyy-MM-DD")
   );
   const [hour, setHour] = useState<string>(
-    moment(voo.horario).zone(6).format("HH:mm")
+    moment(voo.horario).utcOffset(6).format("HH:mm")
   );
 
   const setNewValor = (event: any) => {

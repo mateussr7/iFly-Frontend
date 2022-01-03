@@ -6,6 +6,7 @@ import aeroportoReducer from "./airports";
 import compraReducer from "./compra";
 import airlineReducer from "./airlines";
 import passengerReducer from "./passenger";
+import feedbackReducer from "./feedback";
 
 const rootReducer = combineReducers({
   sidebarReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   aeroportoReducer,
   compraReducer,
   airlineReducer,
-  passengerReducer
+  passengerReducer,
+  feedbackReducer,
 });
 
 export default rootReducer;

@@ -16,22 +16,19 @@ interface props {
   compra: Compra;
 }
 const PurchaseInfo = ({ voo, airline, compra }: props) => {
-  
   const dispatch = useDispatch();
   const [origDest, setOrigDest] = useState<OrigDestRota>();
 
-  
   const getOrigDest = async () => {
     const result = await getOrigDestByRotaId(voo.idRota);
     setOrigDest(result);
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     getOrigDest();
-  },[])
+  }, []);
 
-  useEffect(()=>{
-  },[origDest])
+  useEffect(() => {}, [origDest]);
   const clickVoo = () => {
     dispatch(
       cancelCompra({
@@ -47,16 +44,25 @@ const PurchaseInfo = ({ voo, airline, compra }: props) => {
     <div className="flight-card flex-row">
       <div className="flight-info flex-row-column">
         <div className="flight-title">
-          <div>COMPANHIA AÉREA: {airlines.find((a) => a.id === voo.idEmpresaAerea)?.nome}</div>
-          <div>Data: {moment(voo.horario).zone(6).format("DD/MM/yyyy - HH:mm")}</div>
+          <div>
+            COMPANHIA AÉREA:{" "}
+            {airlines.find((a) => a.id === voo.idEmpresaAerea)?.nome}
+          </div>
+          <div>
+            Data:{" "}
+            {moment(voo.horario).utcOffset(6).format("DD/MM/yyyy - HH:mm")}
+          </div>
         </div>
 
         <div className="small-infos flex-row">
           <div className="flight-hour">
-            Rota: {origDest && origDest.aeroportoOrig + " -> " + origDest.aeroportoDest}
+            Rota:{" "}
+            {origDest &&
+              origDest.aeroportoOrig + " -> " + origDest.aeroportoDest}
           </div>
           <div className="flight-capacity-available">
-            Data da compra: {moment(compra.data).zone(6).format("DD/MM/yyyy")}
+            Data da compra:{" "}
+            {moment(compra.data).utcOffset(6).format("DD/MM/yyyy")}
           </div>
           <div className="flight-capacity">Valor: R${voo.valor}</div>
         </div>
@@ -64,7 +70,11 @@ const PurchaseInfo = ({ voo, airline, compra }: props) => {
       <div className="flight-action flex-row-column">
         <div className="flight-price">Assento: {compra.assento}</div>
         <div className="flight-button">
-          <Button variant="contained" onClick={clickVoo} disabled={moment().isAfter(moment(voo.horario))}>
+          <Button
+            variant="contained"
+            onClick={clickVoo}
+            disabled={moment().isAfter(moment(voo.horario))}
+          >
             Cancelar
           </Button>
         </div>
