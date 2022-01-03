@@ -23,6 +23,11 @@ export interface VooState {
   idRota: number;
 }
 
+export interface OrigDestRota {
+  aeroportoOrig: string;
+  aeroportoDest: string;
+}
+
 export enum VooActions {
   FETCH_VOO_LIST = "@voo/FETCH_VOO_LIST",
   FETCH_VOO_LIST_SUCCESS = "@voo/FETCH_VOO_LIST_SUCCESS",

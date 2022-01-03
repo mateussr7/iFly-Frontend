@@ -14,8 +14,21 @@ import { Compra } from "../../store/compra/types";
 import { fetchCompraList } from "../../store/compra/actions";
 import { fetchVooList } from "../../store/voo/actions";
 import { getLoggedUser } from "../../store/user/selectors";
+import { makeStyles, Typography } from "@material-ui/core";
+
+const useStyles = makeStyles({
+  custom: {
+    color: "black",
+    fontWeight: "bold",
+    fontSize: "32px",
+    margin: "1.5rem",
+    position: "relative",
+    left: "calc(50% - 400px)",
+  }
+});
 
 const ProfileScreen = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const user = useSelector(getLoggedUser);
   const compras: Compra[] = useSelector(getComprasByUser);
@@ -34,19 +47,22 @@ const ProfileScreen = () => {
     <PageHeader
       title="Perfil"
       children={
-        <>
+        <div className="compra-list">
           <ProfileInfoCard user={user?.user as PassengerDTO} />
-          {compras.map((compra) => {
-            var voo = voos.find((voo) => voo.id === compra.idVoo);
-            var airline = airlines.find(
-              (airline) => airline.id === voo?.idEmpresaAerea
-            );
-            if(voo && airline)
-            return (
-              <PurchaseInfo key={compra.idVoo} airline={airline as Airline} voo={voo as Voo} compra={compra}/>
-            );
-          })}
-        </>
+          <Typography variant="h3" className={classes.custom}>Minhas compras</Typography>
+          
+            {compras.map((compra) => {
+              var voo = voos.find((voo) => voo.id === compra.idVoo);
+              var airline = airlines.find(
+                (airline) => airline.id === voo?.idEmpresaAerea
+              );
+              if(voo && airline)
+              return (
+                <PurchaseInfo key={compra.idVoo} airline={airline as Airline} voo={voo as Voo} compra={compra}/>
+              );
+            })}
+          
+          </div>
       }
     />
   );
