@@ -74,7 +74,10 @@ const VooScreen = () => {
           title={passageiro ? "Comprar Voos" : "Visualizar Voos"}
           children={
             <>
-              <FlightCardSearch aeroportos={aeroportos} />
+              <FlightCardSearch
+                aeroportos={aeroportos}
+                airline={airline && loggedUser ? loggedUser : undefined}
+              />
               {vooList.map((voo) => (
                 <FlightCard
                   key={voo.id}

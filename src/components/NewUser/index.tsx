@@ -78,6 +78,7 @@ const NewUserComponent: FC<{}> = () => {
           <TextField
             variant="outlined"
             value={password}
+            type="password"
             onChange={(e) => {
               handlePasswordChange(e.target.value as string);
             }}

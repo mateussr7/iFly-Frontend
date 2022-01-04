@@ -6,13 +6,13 @@ import { useEffect, useState } from "react";
 import { Aeroporto } from "../../store/airports/types";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchVooList } from "../../store/voo/actions";
-import { Airline } from "../../store/user/types";
+import { Airline, LoginDTO } from "../../store/user/types";
 import moment from "moment";
 import { getDestiny, getOrigin } from "../../store/voo/selectors";
 
 interface props {
   aeroportos: Aeroporto[];
-  airline?: Airline | undefined;
+  airline?: LoginDTO | undefined;
 }
 
 const FlightCardSearch = ({ aeroportos, airline }: props) => {
@@ -27,7 +27,7 @@ const FlightCardSearch = ({ aeroportos, airline }: props) => {
         origin: origin,
         destiny: destiny,
         date: date,
-        airline: airline ? airline.id : 0,
+        airline: airline ? airline.user.id : 0,
       })
     );
   };

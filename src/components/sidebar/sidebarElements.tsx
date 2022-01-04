@@ -18,7 +18,7 @@ const SidebarElementsComponent = () => {
       icon: <FlightIcon />,
       ref: "/flights",
       isVisible: loggedUser ? loggedUser.type !== "admin" : false,
-      onClick: () => {}
+      onClick: () => {},
     },
     {
       label: "Ranking",
@@ -26,7 +26,7 @@ const SidebarElementsComponent = () => {
       icon: <EmojiEventsIcon></EmojiEventsIcon>,
       ref: "/ranking",
       isVisible: true,
-      onClick: () => {}
+      onClick: () => {},
     },
     {
       label: "Perfil",
@@ -34,7 +34,7 @@ const SidebarElementsComponent = () => {
       icon: <AccountCircleIcon />,
       ref: "/profile",
       isVisible: loggedUser ? loggedUser.type === "passageiro" : false,
-      onClick: () => {}
+      onClick: () => {},
     },
     {
       label: "Linhas Aereas",
@@ -42,19 +42,19 @@ const SidebarElementsComponent = () => {
       icon: <FlightIcon />,
       ref: "/airlines",
       isVisible: loggedUser ? loggedUser.type === "admin" : false,
-      onClick: () => {}
+      onClick: () => {},
     },
     {
       label: "Sair",
       admin: true,
       icon: <CloseIcon />,
-      ref: "/",
+      ref: "/exit",
       isVisible: true,
       onClick: () => {
-        localStorage.clear()
-        dispatch(logout())
-        window.location.reload()
-      }
+        localStorage.clear();
+        dispatch(logout());
+        window.location.reload();
+      },
     },
   ];
   return sidebarElements;
