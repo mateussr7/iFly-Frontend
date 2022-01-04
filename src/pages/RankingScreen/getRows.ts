@@ -5,6 +5,6 @@ export const getRows = (passengers: Passenger[]) => {
         id: el.id,
         Position: index + 1,
         Name: el.nome,
-        Points: el.quilometragemVoada
+        Points: el.quilometragemVoada.toFixed(2)
     }));
 }

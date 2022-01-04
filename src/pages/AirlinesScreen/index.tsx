@@ -18,10 +18,15 @@ const AirlineScreen: FC<{}> = () => {
     const [addMode, setAddMode] = useState<boolean>(false)
     const [editMode, setEditMode] = useState<boolean>(false)
     const [airlineInView, setAirlineInView] = useState<Airline | null>(null)
+    const [filterAirlines, setFilterAirlines] = useState<Airline[]>(airlines)
     
     useEffect(() => {
         dispatch(getAllAirlines())
-    })
+    }, [dispatch])
+
+    useEffect(() => {
+        setFilterAirlines(airlines)
+    }, [airlines])
 
     const handleCloseEditMode = () => {
         setEditMode(false)
@@ -31,10 +36,14 @@ const AirlineScreen: FC<{}> = () => {
         setAddMode(false)
     }
 
+    const handleFilterChange = (event: any) => {
+        if(event) setFilterAirlines(airlines.filter((el) => el.nome.toUpperCase().includes(event.target.value.toUpperCase())))
+    }
+
     return <>
         {!addMode && !editMode && <PageHeader title="Visualizar Linhas Aéreas">
-            <AirlineCardSearch />
-            {airlines.map((airline) => <div className="airline-card flex-row">
+            <AirlineCardSearch onChangeFilter={handleFilterChange} />
+            {filterAirlines.map((airline) => <div className="airline-card flex-row">
                                             <div className="airline-info flex-row">
                                                 <div className="airline-cnpj">CNPJ: {cnpj(airline.cnpj)}</div>
                                                 <div className="airline-title">COMPANHIA AÉREA: {airline.nome}</div>
