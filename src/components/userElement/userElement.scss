@@ -1,6 +1,19 @@
 .userElement {
   display: flex;
   justify-content: space-between;
-  width: 5rem;
-  margin-right: 40px;
+  width: max-content;
+  float: right;
+  margin-right: 2rem;
+
+  .passageiro {
+    fill: #00ff44;
+  }
+
+  .empresa {
+    fill: #2427ff;
+  }
+
+  .admin {
+    fill: #ff0000;
+  }
 }

@@ -1,17 +1,22 @@
-import React from 'react'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import { Typography } from '@material-ui/core'
-import './userElement.scss'
+import React from "react";
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import { Typography } from "@material-ui/core";
+import "./userElement.scss";
+import { useSelector } from "react-redux";
+import { getLoggedUser } from "../../store/user/selectors";
 
-interface UserElementProps{
-    userName: string
+interface UserElementProps {
+  userName: string;
 }
 
 const UserElement = ({ userName }: UserElementProps) => {
-    return <div className="userElement">
-        <AccountCircleIcon />
-        <Typography>{userName}</Typography>
+  const loggedUser = useSelector(getLoggedUser);
+  return (
+    <div className="userElement">
+      <FiberManualRecordIcon className={loggedUser?.type.trim()} />
+      <Typography>{userName}</Typography>
     </div>
-}
+  );
+};
 
-export default UserElement 
+export default UserElement;
