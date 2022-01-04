@@ -23,6 +23,10 @@ const SnackBarComponent = () => {
     }
   }, [showInfo]);
 
+  useEffect(() => {
+    setTimeout(() => dispatch(hideMessage()), 2000);
+  }, [show]);
+
   function getCorrectIcon() {
     if (showInfo.type === "success") {
       return <CheckIcon className={styles.icon} />;
